@@ -92,6 +92,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Protocol\SppPacket.cs" />
+    <Compile Include="Protocol\Messages\CommandEncoder.cs" />
+    <Compile Include="Models\BudsModel.cs" />
+    <Compile Include="Bluetooth\IBluetoothTransport.cs" />
+    <Compile Include="Bluetooth\Wp81RfcommTransport.cs" />
+    <Compile Include="Services\DeviceSession.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>it-IT</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>Galaxy Buds Client</value>
+  </data>
+  <data name="DevicesPageTitle" xml:space="preserve">
+    <value>dispositivi</value>
+  </data>
+  <data name="SectionDevices" xml:space="preserve">
+    <value>Dispositivi associati</value>
+  </data>
+  <data name="SectionOverview" xml:space="preserve">
+    <value>Panoramica</value>
+  </data>
+  <data name="SectionSound" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="SectionControls" xml:space="preserve">
+    <value>Controlli</value>
+  </data>
+  <data name="SectionTools" xml:space="preserve">
+    <value>Strumenti dispositivo</value>
+  </data>
+  <data name="SectionAbout" xml:space="preserve">
+    <value>Informazioni</value>
+  </data>
+  <data name="ScanForDevices" xml:space="preserve">
+    <value>Cerca auricolari</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connetti</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>Disconnetti</value>
+  </data>
+  <data name="Connected" xml:space="preserve">
+    <value>Connesso</value>
+  </data>
+  <data name="Connecting" xml:space="preserve">
+    <value>Connessione in corso...</value>
+  </data>
+  <data name="NotConnected" xml:space="preserve">
+    <value>Non connesso</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Ricerca in corso...</value>
+  </data>
+  <data name="NoDevicesFound" xml:space="preserve">
+    <value>Nessun auricolare associato trovato. Associa i tuoi Galaxy Buds nelle impostazioni Bluetooth.</value>
+  </data>
+  <data name="DeviceStatusPaired" xml:space="preserve">
+    <value>Associato</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Sinistro</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Destro</value>
+  </data>
+  <data name="Equalizer" xml:space="preserve">
+    <value>Equalizzatore</value>
+  </data>
+  <data name="EqBassBoost" xml:space="preserve">
+    <value>Potenziamento bassi</value>
+  </data>
+  <data name="EqSoft" xml:space="preserve">
+    <value>Morbido</value>
+  </data>
+  <data name="EqDynamic" xml:space="preserve">
+    <value>Dinamico</value>
+  </data>
+  <data name="EqClear" xml:space="preserve">
+    <value>Chiaro</value>
+  </data>
+  <data name="EqTrebleBoost" xml:space="preserve">
+    <value>Potenziamento acuti</value>
+  </data>
+  <data name="TouchpadLock" xml:space="preserve">
+    <value>Blocca touchpad</value>
+  </data>
+  <data name="FindMyEarbuds" xml:space="preserve">
+    <value>Trova i miei auricolari</value>
+  </data>
+  <data name="UnofficialNotice" xml:space="preserve">
+    <value>Gestore Galaxy Buds non ufficiale. Non affiliato con Samsung.</value>
+  </data>
+</root>
