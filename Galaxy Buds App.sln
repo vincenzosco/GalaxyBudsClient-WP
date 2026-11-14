@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C089C8C0-30E0-4E22-80C0-CE093F111A43}") = "Galaxy Buds App", "Galaxy Buds App\Galaxy Buds App.csproj", "{04FA1DF4-ACD7-48CA-B3DC-8BE34FF89CDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Galaxy Buds App", "Galaxy Buds App\Galaxy Buds App.csproj", "{04FA1DF4-ACD7-48CA-B3DC-8BE34FF89CDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
