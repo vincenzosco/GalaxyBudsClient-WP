@@ -25,6 +25,7 @@
     <SilverlightAppEntry>Galaxy_Buds_App.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <VisualStudioVersion>14.0</VisualStudioVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
