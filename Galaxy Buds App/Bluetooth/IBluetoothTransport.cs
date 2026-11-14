@@ -27,11 +27,13 @@ namespace Galaxy_Buds_App.Bluetooth
     {
         public string DeviceId { get; private set; }
         public string Name { get; private set; }
+        public Guid ServiceUuid { get; private set; }
 
-        public DeviceDiscoveredEventArgs(string deviceId, string name)
+        public DeviceDiscoveredEventArgs(string deviceId, string name, Guid serviceUuid)
         {
             DeviceId = deviceId;
             Name = name;
+            ServiceUuid = serviceUuid;
         }
     }
 

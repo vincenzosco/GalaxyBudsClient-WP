@@ -19,6 +19,7 @@ internal static class ModelTests
         Run("lock touchpad encoding", LockTouchpad);
         Run("find my earbuds start/stop", FindMyEarbuds);
         Run("reset encoding", ResetCommand);
+        Run("manager info encoding", ManagerInfo);
         Run("firmware revision gating", FirmwareGating);
         Console.WriteLine("Passed: " + _passed);
     }
@@ -110,6 +111,17 @@ internal static class ModelTests
     {
         byte[] frame = CommandEncoder.EncodeReset(BudsModel.Buds2);
         Assert(frame[3] == (byte)MsgIds.Reset, "Reset ID");
+    }
+
+    private static void ManagerInfo()
+    {
+        // Payload must match upstream ManagerInfoEncoder defaults:
+        // version 1, ClientDeviceTypes.Samsung (1), AndroidSdkVersion 34.
+        byte[] frame = CommandEncoder.EncodeManagerInfo(BudsModel.Buds2);
+        Assert(frame[3] == (byte)MsgIds.ManagerInfo, "ManagerInfo ID");
+        Assert(frame[4] == 1, "ManagerInfo version");
+        Assert(frame[5] == 1, "ManagerInfo device type");
+        Assert(frame[6] == 34, "ManagerInfo sdk version");
     }
 
     private static void FirmwareGating()

@@ -96,6 +96,9 @@ namespace Galaxy_Buds_App.Models
         public static readonly Guid SppStandard = new Guid("00001101-0000-1000-8000-00805F9B34FB");
         public static readonly Guid SppNew = new Guid("2e73a4ad-332d-41fc-90e2-16bef06523f2");
 
+        // All SPP service UUIDs used by Galaxy Buds models, for discovery.
+        public static readonly Guid[] ServiceUuids = new Guid[] { SppLegacy, SppStandard, SppNew };
+
         private static readonly DeviceSpec[] Specs = new DeviceSpec[]
         {
             new DeviceSpec(BudsModel.Buds, "Galaxy Buds", "Galaxy Buds (", SppLegacy, 0xFE, 0xEE, 4,

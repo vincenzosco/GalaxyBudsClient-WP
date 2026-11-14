@@ -78,8 +78,10 @@ namespace Galaxy_Buds_App.Protocol.Messages
 
         public static byte[] EncodeManagerInfo(BudsModel model)
         {
+            // Payload matches upstream ManagerInfoEncoder defaults:
+            // version 1, ClientDeviceTypes.Samsung (1), AndroidSdkVersion 34.
             return SppPacket.Encode(new SppPacket((byte)MsgIds.ManagerInfo, SppMessageType.Request,
-                new byte[] { 1, 2, 33 }), GetProtocol(model));
+                new byte[] { 1, 1, 34 }), GetProtocol(model));
         }
 
         private static SppProtocolKind GetProtocol(BudsModel model)

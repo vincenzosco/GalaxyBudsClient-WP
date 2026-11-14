@@ -16,6 +16,7 @@ namespace Galaxy_Buds_App
         private DeviceSession _session;
         private readonly List<DeviceInfo> _discoveredDevices = new List<DeviceInfo>();
         private string _selectedDeviceId;
+        private string _lastError;
 
         public MainPage()
         {
@@ -31,7 +32,7 @@ namespace Galaxy_Buds_App
         {
             Deployment.Current.Dispatcher.BeginInvoke(delegate
             {
-                _discoveredDevices.Add(new DeviceInfo { Id = e.DeviceId, DisplayName = e.Name, Status = AppResources.DeviceStatusPaired });
+                _discoveredDevices.Add(new DeviceInfo { Id = e.DeviceId, DisplayName = e.Name, ServiceUuid = e.ServiceUuid, Status = AppResources.DeviceStatusPaired });
                 DeviceListBox.ItemsSource = null;
                 DeviceListBox.ItemsSource = _discoveredDevices;
             });
@@ -41,6 +42,8 @@ namespace Galaxy_Buds_App
         {
             Deployment.Current.Dispatcher.BeginInvoke(delegate
             {
+                if (!string.IsNullOrEmpty(e.Error))
+                    _lastError = e.Error;
                 switch (e.State)
                 {
                     case TransportState.Connected:
@@ -57,7 +60,7 @@ namespace Galaxy_Buds_App
                         ConnectButton.IsEnabled = false;
                         break;
                     case TransportState.Disconnected:
-                        ConnectionStatusText.Text = AppResources.NotConnected;
+                        ConnectionStatusText.Text = string.IsNullOrEmpty(e.Error) ? AppResources.NotConnected : e.Error;
                         ConnectButton.IsEnabled = _selectedDeviceId != null;
                         DisconnectButton.IsEnabled = false;
                         OverviewPanel.Visibility = Visibility.Collapsed;
@@ -112,20 +115,40 @@ namespace Galaxy_Buds_App
             if (_selectedDeviceId == null) return;
             ConnectionStatusText.Text = AppResources.Connecting;
             var name = "";
+            Guid discoveredUuid = Guid.Empty;
             foreach (var d in _discoveredDevices)
             {
-                if (d.Id == _selectedDeviceId) { name = d.DisplayName; break; }
+                if (d.Id == _selectedDeviceId) { name = d.DisplayName; discoveredUuid = d.ServiceUuid; break; }
             }
             DeviceSpec spec = DeviceSpecCatalog.FindByDeviceName(name);
             if (spec != null)
                 _session.SetDeviceSpec(spec);
-            try
+
+            // Try the service UUID the device was discovered on first, then
+            // the model's expected one, then every known SPP UUID.
+            var candidates = new List<Guid>();
+            if (discoveredUuid != Guid.Empty)
+                candidates.Add(discoveredUuid);
+            if (spec != null && !candidates.Contains(spec.ServiceUuid))
+                candidates.Add(spec.ServiceUuid);
+            foreach (Guid uuid in DeviceSpecCatalog.ServiceUuids)
             {
-                await _session.ConnectAsync(_selectedDeviceId, spec != null ? spec.ServiceUuid : DeviceSpecCatalog.SppStandard);
+                if (!candidates.Contains(uuid))
+                    candidates.Add(uuid);
             }
-            catch (Exception ex)
+
+            _lastError = null;
+            bool connected = false;
+            foreach (Guid uuid in candidates)
             {
-                ConnectionStatusText.Text = ex.Message;
+                var result = await _session.ConnectAsync(_selectedDeviceId, uuid);
+                if (result == CommandResult.Success) { connected = true; break; }
+            }
+            if (!connected)
+            {
+                ConnectionStatusText.Text = string.IsNullOrEmpty(_lastError)
+                    ? AppResources.NotConnected
+                    : _lastError;
             }
         }
 
@@ -156,6 +179,7 @@ namespace Galaxy_Buds_App
     {
         public string Id { get; set; }
         public string DisplayName { get; set; }
+        public Guid ServiceUuid { get; set; }
         public string Status { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Galaxy_Buds_App.Models;
 using Windows.Devices.Bluetooth.Rfcomm;
 using Windows.Devices.Enumeration;
 using Windows.Networking.Sockets;
@@ -30,12 +31,18 @@ namespace Galaxy_Buds_App.Bluetooth
 
         public async Task DiscoverAsync()
         {
-            var selector = RfcommDeviceService.GetDeviceSelector(RfcommServiceId.SerialPort);
-            var devices = await DeviceInformation.FindAllAsync(selector);
-            foreach (var device in devices)
+            var seen = new HashSet<string>();
+            foreach (Guid uuid in DeviceSpecCatalog.ServiceUuids)
             {
-                if (DeviceDiscovered != null)
-                    DeviceDiscovered(this, new DeviceDiscoveredEventArgs(device.Id, device.Name));
+                var selector = RfcommDeviceService.GetDeviceSelector(RfcommServiceId.FromUuid(uuid));
+                var devices = await DeviceInformation.FindAllAsync(selector);
+                foreach (var device in devices)
+                {
+                    if (!seen.Add(device.Id))
+                        continue;
+                    if (DeviceDiscovered != null)
+                        DeviceDiscovered(this, new DeviceDiscoveredEventArgs(device.Id, device.Name, uuid));
+                }
             }
         }
 
@@ -71,6 +78,7 @@ namespace Galaxy_Buds_App.Bluetooth
             }
             catch (Exception ex)
             {
+                CleanupSocket();
                 SetState(TransportState.Disconnected, ex.Message);
                 throw;
             }
@@ -89,15 +97,20 @@ namespace Galaxy_Buds_App.Bluetooth
             SetState(TransportState.Disconnecting);
             try
             {
-                if (_reader != null) { _reader.Dispose(); _reader = null; }
-                if (_writer != null) { _writer.Dispose(); _writer = null; }
-                if (_socket != null) { _socket.Dispose(); _socket = null; }
+                CleanupSocket();
             }
             finally
             {
                 SetState(TransportState.Disconnected);
             }
             await Task.FromResult(0);
+        }
+
+        private void CleanupSocket()
+        {
+            if (_reader != null) { _reader.Dispose(); _reader = null; }
+            if (_writer != null) { _writer.Dispose(); _writer = null; }
+            if (_socket != null) { _socket.Dispose(); _socket = null; }
         }
 
         private async Task ReadLoopAsync()
