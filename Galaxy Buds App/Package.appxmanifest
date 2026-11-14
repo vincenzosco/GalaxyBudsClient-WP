@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
+  <Identity Name="04fa1df4-acd7-48ca-b3dc-8be34ff89cda" Publisher="CN=Galaxy Buds Client" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="04fa1df4-acd7-48ca-b3dc-8be34ff89cda" PhonePublisherId="3b8928e3-590c-49f5-980c-4faf37c687a7" />
+  <Properties><DisplayName>Galaxy Buds Client</DisplayName><PublisherDisplayName>Independent contributors</PublisherDisplayName><Logo>Assets\StoreLogo.png</Logo></Properties>
+  <Prerequisites><OSMinVersion>6.3.1</OSMinVersion><OSMaxVersionTested>6.3.1</OSMaxVersionTested></Prerequisites>
+  <Resources><Resource Language="en-US" /></Resources>
+  <Applications><Application Id="App" Executable="AGHost.exe" EntryPoint="Galaxy_Buds_App.App"><m3:VisualElements DisplayName="Galaxy Buds Client" Square150x150Logo="Assets\SquareTile150x150.png" Square44x44Logo="Assets\Logo.png" Description="Unofficial Galaxy Buds manager" ForegroundText="light" BackgroundColor="#24262A"><m3:DefaultTile Square71x71Logo="Assets\SquareTile71x71.png"><m3:ShowNameOnTiles><m3:ShowOn Tile="square150x150Logo"/><m3:ShowOn Tile="wide310x150Logo"/></m3:ShowNameOnTiles></m3:DefaultTile><m3:SplashScreen Image="Assets\SplashScreen.png" /></m3:VisualElements></Application></Applications>
+  <Capabilities><Capability Name="internetClient"/><m2:DeviceCapability Name="bluetooth.rfcomm"><m2:Device Id="any"><m2:Function Type="name:serialPort"/><m2:Function Type="serviceId:2e73a4ad-332d-41fc-90e2-16bef06523f2"/><m2:Function Type="serviceId:00001101-0000-1000-8000-00805f9b34fb"/><m2:Function Type="serviceId:00001102-0000-1000-8000-00805f9b34fd"/></m2:Device></m2:DeviceCapability></Capabilities>
+</Package>

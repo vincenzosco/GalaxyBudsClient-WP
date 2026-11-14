@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
-  <DefaultLanguage xmlns="" code="it-IT"/>
-  <App xmlns="" ProductID="{04fa1df4-acd7-48ca-b3dc-8be34ff89cda}" Title="Galaxy_Buds_App" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Galaxy_Buds_App author" Description="Sample description" Publisher="Galaxy_Buds_App" PublisherID="{3b8928e3-590c-49f5-980c-4faf37c687a7}">
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2014/deployment" AppPlatformVersion="8.1">
+  <DefaultLanguage xmlns="" code="en-US"/>
+  <App xmlns="" ProductID="{04fa1df4-acd7-48ca-b3dc-8be34ff89cda}" Title="Galaxy Buds Client" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Galaxy Buds Client contributors" Description="Unofficial Galaxy Buds manager for Windows Phone 8.1" Publisher="Galaxy Buds Client" PublisherID="{3b8928e3-590c-49f5-980c-4faf37c687a7}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING"/>
@@ -19,7 +19,7 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>Galaxy_Buds_App</Title>
+          <Title>Buds Client</Title>
           <BackContent></BackContent>
           <BackBackgroundImageURI></BackBackgroundImageURI>
           <BackTitle></BackTitle>
