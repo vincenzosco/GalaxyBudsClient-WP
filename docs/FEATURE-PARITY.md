@@ -45,3 +45,21 @@ This inventory is pinned to upstream commit [`754b6fdfb1c151b022cece775c8aaad4eb
 ## Feature verification record
 
 No Buds hardware is connected to the development environment. The WP8.1 SDK exposes RFCOMM APIs and a minimal Silverlight API probe compiled against its reference metadata, but that does not establish successful Buds SPP discovery or control. Update this record only after the relevant test and physical-device evidence exist.
+
+## Implementation status (2026-11-14)
+
+| Area | Status |
+|---|---|
+| WP8.1 Silverlight retarget | Done — XAP builds with MSBuild 14 |
+| SPP protocol codec (legacy + modern framing, CRC16) | Done — 7 regression tests pass |
+| Device model catalog (13 models, feature gating) | Done — 11 regression tests pass |
+| Command encoders (equalizer, ambient, touchpad, find, reset) | Done — tested |
+| RFCOMM transport (WP8.1 Silverlight) | Implemented — compile-verified against WP8.1 SDK |
+| Device session (connect, status parsing, command dispatch) | Implemented — tested with fake transport |
+| Metro UI shell (devices, overview, sound, controls, tools) | Implemented — localized EN/IT |
+| Localization (EN default, IT for `it`/`it-*`, fallback EN) | Done |
+| README (EN + IT) with feature matrix and credits | Done |
+| GPL-3.0 license and protocol attribution | Done |
+| Physical device testing | Not done — no WP8.1 phone or Buds available |
+| Firmware update | Not enabled — safety gates not verified |
+| Desktop-only features (tray, CLI, IPC, hotkeys) | Excluded — no WP equivalent |
